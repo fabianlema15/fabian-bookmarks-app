@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.panel {
+  padding: 8px;
+}
+
+.bookmark-panel {
+  margin-top: 5px;
+  border-radius: 7px;
+  border: 1px solid #566573;
+}
+
+.bookmark-panel-header {
+  background-color: #3498DB;
+}
+
+.bookmark-panel-body {
+  background-color: #D5D8DC;
+}
+
+.form {
+  display: block;
+}
+
+.fa-star {
+  color: gray;
+}
+
+.checked {
+  color: #F5B041;
+}
+
+button, input[type="text"] {
+  padding: 5px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:hover:disabled {
+  cursor: default;
+}
+
+.hidden {
+  display: none;
+}
+
+#shopping-list-item {
+  width: 250px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.shopping-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.shopping-list > li {
+  margin-bottom: 20px;
+  border: 1px solid grey;
+  padding: 20px;
+}
+
+.shopping-item {
+  display: block;
+  color: grey;
+  font-style: italic;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.shopping-item__checked {
+  text-decoration: line-through;
+}
+
+.error-content {
+  border: 2px solid red;
+  background-color: lightsalmon;
+}
+
+.error-content p {
+  margin-top: 1px;
+  padding: 7px;
+}
+
+.error-content button {
+  font-size: 6pt;
+  background-color: red;
+  color: white;
+  position: relative;
+  left: 80%;
+}
+
+.collapsible li.active .icon {
+  -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
+}
