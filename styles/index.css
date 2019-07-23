@@ -4,7 +4,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-image: linear-gradient(to bottom right, #e6f5ff 0%, #b3e0ff 31%, #e6f5ff 100%);
+  background-image: linear-gradient(to right, #e6f5ff 0%, #b3e0ff 31%, #e6f5ff 100%);
 }
 
 .container{
@@ -31,6 +31,16 @@ body {
 
 .bookmark-panel-header span {
   float:right;
+}
+
+.bookmark-panel-footer{
+  padding: 0;
+  margin: 0;
+}
+
+.bookmark-panel-footer .buttons{
+  padding: 0;
+  margin: 0 0 8px 0;
 }
 
 .fa-star {

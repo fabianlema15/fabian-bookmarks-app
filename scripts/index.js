@@ -7,7 +7,6 @@ $(document).ready(function() {
   // On initial load, fetch Shopping Items and render
   api.getBookmarks()
     .then((bookmarks) => {
-      console.log(bookmarks);
       bookmarks.forEach((bookmark) => {
       	store.addBookmark(bookmark);
       });
