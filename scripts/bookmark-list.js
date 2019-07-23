@@ -6,19 +6,19 @@ const bookmarkList = (function(){
 
   function generateError(message) {
     return `
-      <section class="error-content">
-        <button type="button" class="cancel-error">X</button>
-        <p>${message}</p>
-      </section>
+      <div class="error-content">
+        <button type="button" class="cancel-error red">X</button>
+        <h4>${message}</h4>
+      </div>
     `;
   }
 
   function generateErrorBookmark(id, message) {
     return `
-      <section class="error-content">
-        <button type="button" class="cancel-error-bookmark" data-bookmark-id="${id}">X</button>
-        <p>${message}</p>
-      </section>
+      <div class="error-content">
+        <button type="button" class="cancel-error-bookmark red" data-bookmark-id="${id}">X</button>
+        <h4>${message}</h4>
+      </div>
     `;
   }
 
@@ -32,15 +32,17 @@ const bookmarkList = (function(){
       let bookmarkBody = `${stars}`;
       let bookmarkFooter = "";
       if (bookmark.isExpanded){
-        bookmarkBody = `<p>${bookmark.desc}</p><a type="button" href"${bookmark.url}">${bookmark.url}</a>` + bookmarkBody; 
+        bookmarkBody = `<p>${bookmark.desc}</p><p><a href="${bookmark.url}" target="_blank">Visit Site</a></p>` + bookmarkBody; 
         bookmarkFooter = `<div class="panel bookmark-panel-footer">
-          <button class="js-button-delete">Delete</button>
-          <button class="js-button-edit">Edit</button>
+          <div class="buttons">
+            <button class="js-button-delete red">Delete</button>
+            <button class="js-button-edit green">Edit</button>
+          </div>
         </div>`
       }
 
       return `<div class="bookmark-panel" data-bookmark-id="${bookmark.id}">
-        <div class="panel bookmark-panel-header js-expand-collapse">
+        <div role="button" tabindex="0" aria-pressed="false" class="panel bookmark-panel-header js-expand-collapse">
           ${bookmarkTitle}
         </div>
         <div class="panel bookmark-panel-body">
@@ -57,26 +59,35 @@ const bookmarkList = (function(){
         </div>
         <div class="panel bookmark-panel-body">
           <form class="js-new-bookmark-form">
-            <label>Title:</label>
-            <input type="text" name="title" id="title" required />
-            <label>Url Link:</label>
-            <input type="text" name="url" id="url" required/>
-            <label>Description:</label>
-            <textarea rows="4" name="desc" id="desc" required></textarea>
-            <label>Rating:</label>
-            <label>1</label>
-            <input type="radio" name="rating" value="1" required>
-            <label>2</label>
-            <input type="radio" name="rating" value="2" required>
-            <label>3</label>
-            <input type="radio" name="rating" value="3" required>
-            <label>4</label>
-            <input type="radio" name="rating" value="4" required>
-            <label>5</label>
-            <input type="radio" name="rating" value="5" required>
+            <div class="form-inputs">
+              <fieldset>
+                <label>Title:</label>
+                <input type="text" name="title" id="title" required />
+              </fieldset>
+              <fieldset>
+                <label>Url Link:</label>
+                <input type="url" name="url" id="url" required/>
+              </fieldset>
+              <fieldset>
+                <label>Description:</label>
+                <textarea rows="4" name="desc" id="desc" required></textarea>
+              </fieldset>
+            </div>
+            <div class="form-rating">
+              <fieldset>
+                <label>Rating:</label>
+                <label><input type="radio" name="rating" value="1" required>1</label>
+                <label><input type="radio" name="rating" value="2" required>2</label>
+                <label><input type="radio" name="rating" value="3" required>3</label>
+                <label><input type="radio" name="rating" value="4" required>4</label>
+                <label><input type="radio" name="rating" value="5" required>5</label>
+              </fieldset>
+            </div>
             <div class="error-container"></div>
-            <button type="button" class="js-button-cancel">Cancel</button>
-            <button type="submit" class="js-button-save">Save</button>
+            <div class="buttons">
+              <button type="button" class="js-button-cancel orange">Cancel</button>
+              <button type="submit" class="js-button-save green">Save</button>
+            </div>
           </form>
         </div>
         <div class="bookmark-panel-footer">
@@ -91,22 +102,27 @@ const bookmarkList = (function(){
         </div>
         <div class="panel bookmark-panel-body">
           <form class="js-edit-bookmark-form">
-            <label>Description:</label>
-            <textarea rows="4" name="desc" id="desc">${bookmark.desc}</textarea>
-            <label>Rating:</label>
-            <label>1</label>
-            <input type="radio" name="rating" value="1" ${bookmark.rating===1?'checked':''} required>
-            <label>2</label>
-            <input type="radio" name="rating" value="2" ${bookmark.rating===2?'checked':''} required>
-            <label>3</label>
-            <input type="radio" name="rating" value="3" ${bookmark.rating===3?'checked':''} required>
-            <label>4</label>
-            <input type="radio" name="rating" value="4" ${bookmark.rating===4?'checked':''} required>
-            <label>5</label>
-            <input type="radio" name="rating" value="5" ${bookmark.rating===5?'checked':''} required>
+            <div class="form-inputs">
+              <fieldset>
+                <label>Description:</label>
+                <textarea rows="4" name="desc" id="desc" required>${bookmark.desc}</textarea>
+              </fieldset>
+            </div>
+            <div class="form-rating">
+              <fieldset>
+                <label>Rating:</label>
+                <label><input type="radio" name="rating" value="1" ${bookmark.rating===1?'checked':''} required>1</label>                
+                <label><input type="radio" name="rating" value="2" ${bookmark.rating===2?'checked':''} required>2</label>
+                <label><input type="radio" name="rating" value="3" ${bookmark.rating===3?'checked':''} required>3</label>
+                <label><input type="radio" name="rating" value="4" ${bookmark.rating===4?'checked':''} required>4</label>
+                <label><input type="radio" name="rating" value="5" ${bookmark.rating===5?'checked':''} required>5</label>
+              </fieldset>
+            </div>
             <div class="bm-err-cont-${bookmark.id}"></div>
-            <button type="button" class="js-button-edit-cancel">Cancel</button>
-            <button type="submit" class="js-button-edit-save">Save</button>
+            <div class="buttons">
+              <button type="button" class="js-button-edit-cancel orange">Cancel</button>
+              <button type="submit" class="js-button-edit-save green">Save</button>
+            </div>
           </form>
         </div>
         <div class="bookmark-panel-footer">
@@ -165,16 +181,20 @@ const bookmarkList = (function(){
   }
 
   function loadHeader(){
-    const html = `<button class="js-button-add">+</button>
-      <label for="select-rating">Filter by minimum rating</label>
-      <select id="select-rating" class="js-select-rating">
-        <option value="0">All</option>
-        <option value="1">1 Star</option>
-        <option value="2">2 Stars</option>
-        <option value="3">3 Stars</option>
-        <option value="4">4 Stars</option>
-        <option value="5">5 Stars</option>
-      </select>`;
+    const html = `<div class="header">
+                    <button class="js-button-add blue">Add Bookmark</button>
+                    <div class="div-rating">
+                      <label for="select-rating">Filter by minimum rating</label>
+                      <select id="select-rating" class="js-select-rating">
+                        <option value="0">All</option>
+                        <option value="1">1 Star</option>
+                        <option value="2">2 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="5">5 Stars</option>
+                      </select>
+                    </div>
+                  </div>`;
     $('.bookmark-header').html(html);
   }
 
@@ -183,6 +203,14 @@ const bookmarkList = (function(){
       const id = getBookmarkIdFromElement(event.currentTarget);
       store.setBookmarkIsExpanded(id, !store.findById(id).isExpanded);
       render();
+    });
+
+    $('.bookmarks-list').on('keyup', '.js-expand-collapse', event => {
+      if (event.keyCode === 13) {
+        const id = getBookmarkIdFromElement(event.currentTarget);
+        store.setBookmarkIsExpanded(id, !store.findById(id).isExpanded);
+        render();
+      }
     });
   }
 
@@ -241,6 +269,7 @@ const bookmarkList = (function(){
       api.createBookmark(Object.fromEntries(new FormData(event.target)))
         .then((bookmark) => {
           store.addBookmark(bookmark);
+          store.setMessageError('');
           store.adding = false;
           render();
         })
@@ -291,15 +320,6 @@ const bookmarkList = (function(){
   }
   
   function bindEventListeners() {
-    /*handleNewBookmarkSubmit();
-    handleBookmarkCheckClicked();
-    handleDeleteBookmarkClicked();
-    handleEditShoppingBookmarkSubmit();
-    handleToggleFilterClick();
-    handleShoppingListSearch();
-    handleBookmarkStartEditing();
-    */
-    
     handleNewBookmark();
     handleChangeRating();
     handleCancelNewBookmark();

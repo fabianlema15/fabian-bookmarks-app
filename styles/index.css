@@ -4,28 +4,33 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  background-image: linear-gradient(to bottom right, #e6f5ff 0%, #b3e0ff 31%, #e6f5ff 100%);
+}
+
+.container{
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
 
 .panel {
-  padding: 8px;
+  padding: 12px;
 }
 
 .bookmark-panel {
   margin-top: 5px;
   border-radius: 7px;
-  border: 1px solid #566573;
+  border: 1px solid #338fff;
 }
 
 .bookmark-panel-header {
-  background-color: #3498DB;
+  background-color: #338fff;
+  font-size: 20px;
+  color: white;
 }
 
-.bookmark-panel-body {
-  background-color: #D5D8DC;
-}
-
-.form {
-  display: block;
+.bookmark-panel-header span {
+  float:right;
 }
 
 .fa-star {
@@ -36,74 +41,191 @@ body {
   color: #F5B041;
 }
 
-button, input[type="text"] {
-  padding: 5px;
+label {
+  width:29%;
+  display: inline-block;
 }
 
-button:hover {
-  cursor: pointer;
+input, textarea {
+  width: 70%;
+  float: right;
 }
 
-button:hover:disabled {
-  cursor: default;
+.form-inputs{
+  width: 75%;
+  display: inline-block;
 }
 
-.hidden {
-  display: none;
-}
-
-#shopping-list-item {
-  width: 250px;
-}
-
-.container {
-  max-width: 600px;
+.form-rating{
+  text-align: center;
   margin: 0 auto;
+  width: 23%;
+  float: right;
 }
 
-.shopping-list {
-  list-style: none;
-  padding-left: 0;
-}
-
-.shopping-list > li {
-  margin-bottom: 20px;
-  border: 1px solid grey;
-  padding: 20px;
-}
-
-.shopping-item {
+.form-rating label {
   display: block;
-  color: grey;
-  font-style: italic;
-  font-size: 20px;
-  margin-bottom: 15px;
+  width: 70%;
 }
 
-.shopping-item__checked {
-  text-decoration: line-through;
+.form-rating input {
+  float: none;
+}
+
+button {
+    margin: 15px auto 0px auto;
+    padding: 9px 32px;
+    font-size: 17px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 3px #6C757D;
+}
+
+button:active {
+    box-shadow: 0 4px #666;
+    transform: translateY(4px);
+}
+
+.blue {
+  background-color: #167AF6;
+}
+
+.blue:hover, .blue:focus {
+    background-color: #1264C9;
+}
+
+.green {
+  background-color: #4CA846;
+}
+
+.green:hover, .green:focus {
+    background-color: #3B8236;
+}
+
+.orange {
+  background-color: #F8C246;
+}
+
+.orange:hover, .orange:focus {
+    background-color: #B89034;
+}
+
+.red {
+  background-color: #DC3545;
+}
+
+.red:hover, .red:focus {
+    background-color: #A02632;
+}
+
+.buttons {
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+}
+
+.buttons button {
+  margin-top: 10px;
+  width: 30%;
+}
+
+.header {
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+}
+
+.header div {
+  text-align: center;
+  display: inline-block;
+  width: 60%;
+}
+
+.header label {
+  display: inline-block;
+  width: 200px;
+}
+
+.header select {
+  width: 120px;
+  border: 1px solid #167AF6;
 }
 
 .error-content {
-  border: 2px solid red;
-  background-color: lightsalmon;
+  border-radius: 7px;
+  border: 1px solid red;
+  padding: 0 10px 0 10px;
+  background-color: #ffcccc;
+  width: 100%;
+  display: inline-block;
 }
 
-.error-content p {
-  margin-top: 1px;
-  padding: 7px;
+.error-content h4 {
+  padding: 2px;
+  margin: 2px;
+  width: 100%;
 }
 
 .error-content button {
+  width: 10px;
   font-size: 6pt;
-  background-color: red;
-  color: white;
-  position: relative;
-  left: 80%;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  float: right;
+  display: inline-block;
 }
 
-.collapsible li.active .icon {
-  -ms-transform: rotate(180deg); /* IE 9 */
-  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-  transform: rotate(180deg);
+@media screen and (max-width: 570px) {
+  label {
+    width: 100%;
+    display:block;
+  }
+
+  input, textarea{
+    width: 100%;
+    float: none;
+  }
+
+  .form-inputs{
+    width: 100%;
+    display: block;
+  }
+
+  .form-rating{
+    width: 100%;
+    float: none;
+  }
+
+  .form-rating label {
+    display: block;
+    width: 70%;
+  }
+
+  .form-rating input {
+    float: none;
+    width: 20%;
+  }
+
+  .buttons {
+    text-align: center;
+    width: 100%;
+    display: block;
+  }
+
+  .buttons button {
+    width: 70%;
+  }
+
+  .header div, .header label{
+    width: 100%;
+  }
+
+  .header div {
+    margin-top: 10px;
+  }
 }
